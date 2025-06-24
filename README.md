@@ -6,6 +6,48 @@ This project also introduces the basics of programming through JavaScript which 
 
 ## Writing the Logic to Get the Computer Choice
 
+The simulation of the game between the human and the computer requires the implementation of the game logic for the computer to decide between playing rock, paper, or scissors. The random generation of numbers between 0 and 2 inclusive corresponds to the possible choices for the computer.
+
+The function ```getComputerChoice``` implements the game logic for the computer through randomly returning a string representing the choice of the computer.
+
+- When the randomly generated value is 0, the function returns ```"rock"``` to represent the computer playing **rock** against the player.
+
+- When the randomly generated value is 1, the function returns ```"paper"``` to represent the computer playing **paper** against the player.
+
+- When the randomly generated value is 2, the function returns ```"scissors"``` to represent the compluter playing **scissors** against the player.
+
+### Psuedocode
+```
+SEQUENCE 
+DETERMINE computer choice between "rock", "paper", and "scissors"
+
+Generate random value between 0 and 2 (inclusive)
+
+IF value is zero THEN
+    RETURN "rock"
+ELSE IF value is one THEN
+    RETURN "paper"
+ELSE
+    RETURN "scissors"
+ENDIF
+```
+
+### Source Code
+```
+function getComputerChoice() {
+    let choice = Math.floor(Math.random() * 3);
+
+    if (choice === 0)
+        return "rock";
+
+    else if (choice === 1)
+        return "paper";
+
+    else 
+        return "scissors";
+}
+```
+
 ## Writing the Logic to Get the Player Choice
 
 ## Declare Player Score Variables

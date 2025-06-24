@@ -90,4 +90,114 @@ let playerScore = computerScore = 0
 
 ## Writing the Logic to Play a Single Round
 
+The simulation of the game between the human and the computer requires of the implementation of the game logic for a single round. Based on the choice of the human and the computer of the round, the winner of round earns a point.
+
+The function ```playRound``` compares the choice of the human and the computer to determine the winner and increment the score of the winner.
+
+-   The human wins when the human plays **rock** and the computer plays **scissors**.
+
+- The human wins when the human plays **paper** when the computer plays **rock**.
+
+- The human wins when the human plays **scissors** when the computer plays **paper**.
+
+- The scenarios where the human loses against the computer is the **opposite** of the scenarios where the human wins against the computer.
+
+- The use of the string methods ```charAt```, ```toUpperCase```, and ```slice``` to capitalize a string is repeatable pattern which can be implemented as a helper function.
+
+### Pseudocode (Iteration 1)
+```
+SEQUENCE
+GET humanChoice and computerChoice
+PRINT message representing round winner
+INCREMENT humanScore or computerScore based on round winner
+
+IF human plays rock AND computer plays scissors OR
+   human plays paper AND computer plays rock OR
+   human plays scissors AND computers plays paper THEN
+
+        Add 1 to humanScore
+        Print "You win! {humanChoice} beats {computerChoice}."
+ELSE
+
+    Add 1 to computerScore
+    Print "You lose! {computerChoice} beats {humanChoice}."
+```
+
+### Source Code (Iteration 1)
+```
+function playRound(humanChoice, computerChoice) {
+    humanChoice = humanChoice.toLowerCase();
+
+    if (humanChoice === "rock" && computerChoice === "scissors" ||
+        humanChoice === "paper" && computerChoice === "rock" ||
+        humanChoice === "scissors" && computerChoice === "paper") {
+        ++humanScore;
+        console.log(`You win! ${capitalize(humanChoice)} beats ${capitalize(computerChoice)}.`);
+    }
+    else {
+         ++computerScore;
+        console.log(`You lose! ${capitalize(computerChoice)} beats ${capitalize(humanChoice)}.`);
+    }
+}
+
+function capitalize(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1); 
+}
+```
+
+The previous implementation of the function ```playRound``` did not account for the scenario in which the human and computer had the same selection because the computer is declared the winner when the choice of the human and the computer match. Instead, there should no winner and neither the score of the human and computer should be incremented.
+
+### Pseudocode (Iteration 2)
+```
+SEQUENCE
+GET humanChoice and computerChoice
+PRINT message representing round winner
+INCREMENT humanScore or computerScore based on round winner
+
+IF human plays rock AND computer plays scissors OR
+   human plays paper AND computer plays rock OR
+   human plays scissors AND computers plays paper THEN
+
+        Add 1 to humanScore
+        Print "You win! {humanChoice} beats {computerChoice}."
+
+ELSE IF human plays rock AND computer plays paper OR
+        human plays paper AND computer plays scissors OR
+        human plays scissors AND computer plays rock THEN
+
+        Add 1 to computerScore
+        Print "You lose! {computerChoice} beats {humanChoice}."
+
+ELSE
+
+    Print "Tie! Both of us picked {humanChoice}."
+```
+
+### Source Code (Iteration 2)
+```
+function playRound(humanChoice, computerChoice) {
+    humanChoice = humanChoice.toLowerCase();
+
+    if (humanChoice === "rock" && computerChoice === "scissors" ||
+        humanChoice === "paper" && computerChoice === "rock" ||
+        humanChoice === "scissors" && computerChoice === "paper") {
+        ++humanScore;
+        console.log(`You win! ${capitalize(humanChoice)} beats ${capitalize(computerChoice)}.`);
+    }
+    else if (humanChoice === "rock" && computerChoice === "paper" ||
+             humanChoice === "paper" && computerChoice === "scissors" ||
+             humanChoice === "scissors" && computerChoice === "rock") {
+        ++computerScore;
+        console.log(`You lose! ${capitalize(computerChoice)} beats ${capitalize(humanChoice)}.`);
+    }
+    else {
+        console.log(`Tie! Both of us picked ${capitalize(humanChoice)}.`);
+    }
+}
+
+function capitalize(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1); 
+}
+```
+
 ## Writing the Logic to Play a Single Game

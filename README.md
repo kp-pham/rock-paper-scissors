@@ -201,3 +201,53 @@ function capitalize(string) {
 ```
 
 ## Writing the Logic to Play a Single Game
+
+The simulation of the game between the human and computer requires the implementation of the game logic for the human to play the number of consecutive rounds specified against the computer. The most common design pattern for games with a consecutive number of rounds is the game loop.
+
+The function ```playGame``` implements the game loop for the player to play against for five consecutive rounds and declares the player with the highest score the winner at the end of the game.
+
+- The number of consecutive rounds in the game is declared as a global constant ```GAME_LENGTH``` because the number of consecutive rounds should not be changed during program and encapsulates the meaning of the number instead of a magic value.
+
+- The scenario in which the human and the computer have the **same** score should be accounted for in addition to the scenarios in which the human has a higher score than the computer and the human has a lower score than the computer.
+
+
+### Pseudocode
+```
+SEQUENCE
+PRINT message declaring game winner
+
+For i = 0 to 4
+    CALL getHumanChoice RETURNING humanSelection
+    CALL getComputerChoice RETURNING computerSelection
+    CALL playRound with humanSelection and computerSelection
+
+IF humanScore greater than computerScore THEN
+    PRINT "Congratulations! You beat me!"
+
+ELSE IF humanScore less than computerScore THEN
+    PRINT "Better luck next time! I beat you!"
+
+ELSE
+    PRINT "We tied! One more round to see who's the better of us?"
+```
+
+### Source Code
+```
+function playGame() {
+    for (let i = 0; i < GAME_LENGTH; ++i) {
+        const humanSelection = getHumanChoice();
+        const computerSelection = getComputerChoice();
+
+        playRound(humanSelection, computerSelection);
+    }
+
+    if (humanScore > computerScore)
+        console.log("Congratulations! You beat me!");
+
+    else if (humanScore < computerScore)
+        console.log("Better luck next time! I beat you!");
+
+    else
+        console.log("We tied! One more round to see who's the better of us?");
+}
+```

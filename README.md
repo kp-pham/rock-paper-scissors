@@ -78,6 +78,16 @@ function getHumanChoice() {
 ```
 ## Declare Player Score Variables
 
+The scores of the human and the computer are stored as ```playerScore``` and ```computerScore``` which are global variables defined at the top of the program.
+
+-  Global variables are in scope throughout the entire program for the scores of the human and computer to be accessible for all functions.
+
+- The variables are not declared as constants because the scores of the human and computer are incremented when the human or the computer wins a round.
+
+```
+let playerScore = computerScore = 0
+```
+
 ## Writing the Logic to Play a Single Round
 
 ## Writing the Logic to Play a Single Game

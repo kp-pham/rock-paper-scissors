@@ -41,3 +41,8 @@ function playRound(humanChoice, computerChoice) {
 function capitalize(string) {
     return string.charAt(0).toUpperCase() + string.slice(1); 
 }
+
+const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
+
+playRound(humanSelection, computerSelection);

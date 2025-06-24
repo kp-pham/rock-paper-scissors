@@ -27,9 +27,14 @@ function playRound(humanChoice, computerChoice) {
         ++humanScore;
         console.log(`You win! ${capitalize(humanChoice)} beats ${capitalize(computerChoice)}.`);
     }
-    else {
+    else if (humanChoice === "rock" && computerChoice === "paper" ||
+             humanChoice === "paper" && computerChoice === "scissors" ||
+             humanChoice === "scissors" && computerChoice === "rock") {
         ++computerScore;
         console.log(`You lose! ${capitalize(computerChoice)} beats ${capitalize(humanChoice)}.`);
+    }
+    else {
+        console.log(`Tie! Both of us picked ${capitalize(humanChoice)}.`);
     }
 }
 

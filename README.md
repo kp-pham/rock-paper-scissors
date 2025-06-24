@@ -48,8 +48,34 @@ function getComputerChoice() {
 }
 ```
 
-## Writing the Logic to Get the Player Choice
+## Writing the Logic to Get the Human Choice
 
+The simulation of the game between the human and the computer requires the human to interact with the computer. The human chooses between playing rock, paper, or scissors, and the selection of the human is passed to the program as user input. 
+
+The function ```getHumanChoice``` creates the interface for the human to interact with the computer through an external window. The user input is assumed to be valid and there is no requirement to reprompt the user for invalid input.
+
+- The ```prompt``` method of the Window class instructs the browser to display an external window with a display message.
+
+- The external window contains a text box for the human to type in their selection which is stored in the program as a string.
+
+- The return value from the ```prompt``` method is passed to the return expression of the function to be returned.
+
+### Pseudocode
+
+```
+SEQUENCE
+READ human choice from prompt window
+
+CALL prompt RETURNING human choice
+RETURN human choice
+```
+
+### Source Code
+```
+function getHumanChoice() {
+    return prompt("rock, paper, or scissors?");
+}
+```
 ## Declare Player Score Variables
 
 ## Writing the Logic to Play a Single Round

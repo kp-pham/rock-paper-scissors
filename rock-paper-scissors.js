@@ -46,6 +46,10 @@ function capitalize(string) {
     return string.charAt(0).toUpperCase() + string.slice(1); 
 }
 
+function checkWinner() {
+    return humanScore == WiNNER_SCORE || computerScore == WINNER_SCORE;
+}
+
 const rockButton = document.querySelector("#rock");
 const paperButton = document.querySelector("#paper");
 const scissorsButton = document.querySelector("#scissors");

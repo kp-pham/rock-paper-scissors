@@ -53,3 +53,20 @@ const scissorsButton = document.querySelector("#scissors");
 rockButton.addEventListener("click", () => playRound("rock", getComputerChoice()));
 paperButton.addEventListener("click", () => playRound("paper", getComputerChoice()));
 scissorsButton.addEventListener("click", () => playRound("scissors", getComputerChoice()));
+
+const endGame = new CustomEvent("endGame");
+
+const buttons = document.querySelector(".buttons");
+
+buttons.addEventListener("endGame", () => {
+    buttons.removeChild(rockButton);
+    buttons.removeChild(paperButton);
+    buttons.removeChild(scissorsButton);
+    document.removeChild(buttons);
+
+    const winnerDeclaration = document.createElement("h1");
+    if (humanScore == WINNER_SCORE)
+        winnerDeclaration.textContent = "Congratulations! You beat me!";
+    else 
+        winnerDeclaration.textContent = "Better luck next time! I beat you!";
+});

@@ -2,6 +2,7 @@ let humanScore = computerScore = 0;
 
 const humanScoreDisplay = document.querySelector("#human-score");
 const computerScoreDisplay = document.querySelector("#computer-score");
+const announcementsDisplay = document.querySelector("#announcements");
 
 function getComputerChoice() {
     let choice = Math.floor(Math.random() * 3);
@@ -27,16 +28,16 @@ function playRound(humanChoice, computerChoice) {
         humanChoice === "paper" && computerChoice === "rock" ||
         humanChoice === "scissors" && computerChoice === "paper") {
         humanScoreDisplay.textContent = `Your Score: ${++humanScore}`;
-        console.log(`You win! ${capitalize(humanChoice)} beats ${capitalize(computerChoice)}.`);
+        announcementsDisplay.textContent = `You win! ${capitalize(humanChoice)} beats ${capitalize(computerChoice)}.`;
     }
     else if (humanChoice === "rock" && computerChoice === "paper" ||
              humanChoice === "paper" && computerChoice === "scissors" ||
              humanChoice === "scissors" && computerChoice === "rock") {
         computerScoreDisplay.textContent = `Computer's Score: ${++computerScore}`;
-        console.log(`You lose! ${capitalize(computerChoice)} beats ${capitalize(humanChoice)}.`);
+        announcementsDisplay.textContent = `You lose! ${capitalize(computerChoice)} beats ${capitalize(humanChoice)}.`;
     }
     else {
-        console.log(`Tie! Both of us picked ${capitalize(humanChoice)}.`);
+        announcementsDisplay.textContent = `Tie! Both of us picked ${capitalize(humanChoice)}.`;
     }
 }
 

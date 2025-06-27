@@ -47,20 +47,31 @@ function capitalize(string) {
 }
 
 function checkWinner() {
-    return humanScore == WiNNER_SCORE || computerScore == WINNER_SCORE;
+    return humanScore == WINNING_SCORE || computerScore == WINNING_SCORE;
 }
+
+const endGame = new CustomEvent("endGame");
+const buttons = document.querySelector(".human-choices");
+
 
 const rockButton = document.querySelector("#rock");
 const paperButton = document.querySelector("#paper");
 const scissorsButton = document.querySelector("#scissors");
 
-rockButton.addEventListener("click", () => playRound("rock", getComputerChoice()));
-paperButton.addEventListener("click", () => playRound("paper", getComputerChoice()));
-scissorsButton.addEventListener("click", () => playRound("scissors", getComputerChoice()));
+rockButton.addEventListener("click", () => {
+    playRound("rock", getComputerChoice());
+    if (checkWinner()) buttons.dispatchEvent(endGame);
+});
 
-const endGame = new CustomEvent("endGame");
+paperButton.addEventListener("click", () => {
+    playRound("paper", getComputerChoice());
+    if (checkWinner()) buttons.dispatchEvent(endGame);
+});
 
-const buttons = document.querySelector(".buttons");
+scissorsButton.addEventListener("click", () => {
+    playRound("scissors", getComputerChoice());
+    if (checkWinner()) buttons.dispatchEvent(endGame);
+});
 
 buttons.addEventListener("endGame", () => {
     buttons.removeChild(rockButton);

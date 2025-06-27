@@ -77,7 +77,7 @@ buttons.addEventListener("endGame", () => {
     buttons.removeChild(rockButton);
     buttons.removeChild(paperButton);
     buttons.removeChild(scissorsButton);
-    document.removeChild(buttons);
+    buttons.parentNode.removeChild(buttons);
 
     const winnerDeclaration = document.createElement("h1");
     if (humanScore == WINNER_SCORE)

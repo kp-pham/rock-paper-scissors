@@ -42,3 +42,11 @@ function playRound(humanChoice, computerChoice) {
 function capitalize(string) {
     return string.charAt(0).toUpperCase() + string.slice(1); 
 }
+
+const rockButton = document.querySelector("#rock");
+const paperButton = document.querySelector("#paper");
+const scissorsButton = document.querySelector("#scissors");
+
+rockButton.addEventListener("click", () => playRound("rock", getComputerChoice()));
+paperButton.addEventListener("click", () => playRound("paper", getComputerChoice()));
+scissorsButton.addEventListener("click", () => playRound("scissors", getComputerChoice()));

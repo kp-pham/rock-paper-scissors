@@ -1,6 +1,7 @@
-const GAME_LENGTH = 5;
 let humanScore = computerScore = 0;
 
+const humanScoreDisplay = document.querySelector("#human-score");
+const computerScoreDisplay = document.querySelector("#computer-score");
 
 function getComputerChoice() {
     let choice = Math.floor(Math.random() * 3);
@@ -25,13 +26,13 @@ function playRound(humanChoice, computerChoice) {
     if (humanChoice === "rock" && computerChoice === "scissors" ||
         humanChoice === "paper" && computerChoice === "rock" ||
         humanChoice === "scissors" && computerChoice === "paper") {
-        ++humanScore;
+        humanScoreDisplay.textContent = `Your Score: ${++humanScore}`;
         console.log(`You win! ${capitalize(humanChoice)} beats ${capitalize(computerChoice)}.`);
     }
     else if (humanChoice === "rock" && computerChoice === "paper" ||
              humanChoice === "paper" && computerChoice === "scissors" ||
              humanChoice === "scissors" && computerChoice === "rock") {
-        ++computerScore;
+        computerScoreDisplay.textContent = `Computer's Score: ${++computerScore}`;
         console.log(`You lose! ${capitalize(computerChoice)} beats ${capitalize(humanChoice)}.`);
     }
     else {

@@ -42,23 +42,3 @@ function playRound(humanChoice, computerChoice) {
 function capitalize(string) {
     return string.charAt(0).toUpperCase() + string.slice(1); 
 }
-
-function playGame() {
-    for (let i = 0; i < GAME_LENGTH; ++i) {
-        const humanSelection = getHumanChoice();
-        const computerSelection = getComputerChoice();
-
-        playRound(humanSelection, computerSelection);
-    }
-
-    if (humanScore > computerScore)
-        console.log("Congratulations! You beat me!");
-
-    else if (humanScore < computerScore)
-        console.log("Better luck next time! I beat you!");
-
-    else
-        console.log("We tied! One more round to see who's the better of us?");
-}
-
-playGame();

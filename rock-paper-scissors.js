@@ -51,6 +51,7 @@ function checkWinner() {
 }
 
 const endGame = new CustomEvent("endGame");
+const results = document.querySelector(".results");
 const buttons = document.querySelector(".human-choices");
 
 
@@ -80,8 +81,10 @@ buttons.addEventListener("endGame", () => {
     buttons.parentNode.removeChild(buttons);
 
     const winnerDeclaration = document.createElement("h1");
-    if (humanScore == WINNER_SCORE)
+    if (humanScore == WINNING_SCORE)
         winnerDeclaration.textContent = "Congratulations! You beat me!";
-    else 
+    else
         winnerDeclaration.textContent = "Better luck next time! I beat you!";
+
+    results.appendChild(winnerDeclaration);
 });

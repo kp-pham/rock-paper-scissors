@@ -1,3 +1,4 @@
+const WINNING_SCORE = 5;
 let humanScore = computerScore = 0;
 
 const humanScoreDisplay = document.querySelector("#human-score");
